@@ -1,4 +1,4 @@
-from random import randint
+from random import randint, seed
 from pprint import pprint
 
 def genPlate(n, m):
@@ -39,8 +39,14 @@ def encodePlate(plate):
 
     return res
 
-for i in range(50):
-    n, m = randint(1, 5), randint(1, 5)
+subtask1 = 10
+subtask2 = 10 + subtask1
+subtask3 = 10 + subtask2
+subtask4 = 30 + subtask3
+seed(0xdeadbeef)
+
+for i in range(subtask1):
+    n, m = 1, randint(1, 5)
     p = genPlate(n, m)
     e = encodePlate(p)
 
@@ -56,10 +62,9 @@ for i in range(50):
                 f.write(['_', 'o'][c])
             f.write('\n')
 
-for i in range(50, 70):
-    n, m = randint(1, 25), randint(1, 25)
-    while n * m > 25:
-        n, m = randint(1, 25), randint(1, 25)
+for i in range(subtask1, subtask2):
+    n, m = randint(1, 3), randint(1, 3)
+    
     p = genPlate(n, m)
     e = encodePlate(p)
 
@@ -75,10 +80,29 @@ for i in range(50, 70):
                 f.write(['_', 'o'][c])
             f.write('\n')
 
-for i in range(70, 100):
+for i in range(subtask2, subtask3):
+    n, m = 1, randint(3, 25)
+
+    p = genPlate(n, m)
+    e = encodePlate(p)
+
+    with open(f'./testdata/{i}.in', 'w') as f:
+        f.write(f'{n} {m}\n')
+        for r in e:
+            f.write(f"{len(r)} ")
+            f.write(" ".join(map(str, r)) + "\n")
+
+    with open(f'./testdata/{i}.out', 'w') as f:
+        for r in p:
+            for c in r:
+                f.write(['_', 'o'][c])
+            f.write('\n')
+
+for i in range(subtask3, subtask4):
     n, m = randint(1, 25), randint(1, 25)
-    while n * m > 25 or n * m < 20:
+    while n * m > 25 or n * m < 5:
         n, m = randint(1, 25), randint(1, 25)
+
     p = genPlate(n, m)
     e = encodePlate(p)
 
