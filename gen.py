@@ -39,13 +39,57 @@ def encodePlate(plate):
 
     return res
 
-subtask1 = 10
+subtask0 = 2
+subtask1 = 10 + subtask0
 subtask2 = 10 + subtask1
 subtask3 = 10 + subtask2
 subtask4 = 30 + subtask3
 seed(0xdeadbeef)
 
-for i in range(subtask1):
+with open('./testdata/0.in', 'w') as f:
+    f.write(
+        f'4 4\n'
+        f'2 1 1\n'
+        f'2 1 1\n'
+        f'2 1 1\n'
+        f'1 4\n'
+        f'2 1 2\n'
+        f'2 1 1\n'
+        f'2 1 2\n'
+        f'2 1 1\n'
+    )
+with open('./testdata/0.out', 'w') as f:
+    f.write(
+        'o_o_\n'
+        '_o_o\n'
+        'o_o_\n'
+        'oooo\n'
+    )
+with open('./testdata/1.in', 'w') as f:
+    f.write(
+        f'5 5\n'
+        f'1 4\n'
+        f'1 2\n'
+        f'1 3\n'
+        f'1 2\n'
+        f'1 4\n'
+        f'2 1 1\n'
+        f'2 3 1\n'
+        f'3 1 1 1\n'
+        f'2 1 3\n'
+        f'2 1 1\n'
+    )
+with open('./testdata/1.out', 'w') as f:
+    f.write(
+        '_oooo\n'
+        'oo___\n'
+        '_ooo_\n'
+        '___oo\n'
+        'oooo_\n'
+    )
+
+
+for i in range(subtask0, subtask1):
     n, m = 1, randint(1, 5)
     p = genPlate(n, m)
     e = encodePlate(p)
