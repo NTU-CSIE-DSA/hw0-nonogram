@@ -36,6 +36,7 @@ bool solve(int n, int m, char plate[25][25], int rowCnt[25], int row[25][13],
   }
 
   // enumerate the r-th row
+  // fill with every possible way
   for (int i = 0; i < (1 << m); i++) {
     bool rowLegal = true;
 
